@@ -33,7 +33,7 @@ const getTransactions = asyncHandler(async (req, res) => {
     .skip(skip)
     .limit(limit)
     .toArray();
-
+  console.log(transactions);
   res.status(200).json(
     new ApiResponse(200, "Transactions fetched successfully", {
       transactions,
