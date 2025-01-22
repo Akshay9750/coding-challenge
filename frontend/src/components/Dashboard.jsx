@@ -59,29 +59,43 @@ const Dashboard = () => {
   }, [month]);
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Transactions Dashboard</h1>
+    <div className="p-8 bg-gray-50 min-h-screen">
+      <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
+        Transactions Dashboard
+      </h1>
       <SearchBar
         month={month}
         setMonth={setMonth}
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
       />
-      <TransactionsTable
-        data={tableData}
-        page={page}
-        setPage={setPage}
-        perPage={perPage}
-        setPerPage={setPerPage}
-        total={total}
-      />
+
+      <div className="bg-white p-6 rounded-lg shadow-md mb-6">
+        <TransactionsTable
+          data={tableData}
+          page={page}
+          setPage={setPage}
+          perPage={perPage}
+          setPerPage={setPerPage}
+          total={total}
+        />
+      </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-md mb-6">
+        <h3 className="text-xl font-semibold mb-4">Statistics for {month}</h3>
+        <StatisticsCard data={statistics} />
+      </div>
+
       {loading ? (
-        <p>Loading statistics, bar chart, and pie chart...</p>
+        <p className="text-center text-gray-600">
+          Loading statistics, bar chart, and pie chart...
+        </p>
       ) : (
         <>
-          <StatisticsCard data={statistics} />
-          <BarChart data={barChartData} />
-          <PieChart data={pieChartData} />
+          <div className="flex flex-wrap gap-4 justify-center lg:justify-between">
+            <BarChart data={barChartData} />
+            <PieChart data={pieChartData} />
+          </div>
         </>
       )}
     </div>

@@ -17,21 +17,21 @@ const SearchBar = ({ month, setMonth, searchTerm, setSearchTerm }) => {
   ];
 
   return (
-    <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
+    <div className="flex flex-col md:flex-row items-center gap-4 mb-6">
       {/* Search Input */}
       <input
         type="text"
         placeholder="Search transactions"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        style={{ padding: "10px", flex: 1 }}
+        className="w-full md:w-2/3 p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
       />
 
       {/* Month Dropdown */}
       <select
         value={month}
         onChange={(e) => setMonth(e.target.value)}
-        style={{ padding: "10px" }}
+        className="p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
       >
         {months.map((m) => (
           <option key={m} value={m}>

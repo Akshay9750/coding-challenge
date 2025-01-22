@@ -14,7 +14,6 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 const BarChart = ({ data }) => {
   if (!data) return null;
-  console.log(data);
 
   const chartData = {
     labels: data.itemCounts.map((item) => item.range),
@@ -27,7 +26,14 @@ const BarChart = ({ data }) => {
     ],
   };
 
-  return <Bar data={chartData} />;
+  return (
+    <div className="bg-white p-6 shadow-md rounded-lg mb-6 w-full sm:w-full md:w-[48%] lg:w-[48%] h-[400px]">
+      <h2 className="text-2xl font-semibold text-gray-700 mb-4">
+        Item Count Bar Chart
+      </h2>
+      <Bar data={chartData} options={{ responsive: true }} />
+    </div>
+  );
 };
 
 export default BarChart;

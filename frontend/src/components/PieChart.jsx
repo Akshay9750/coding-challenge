@@ -26,7 +26,24 @@ const PieChart = ({ data }) => {
     ],
   };
 
-  return <Pie data={chartData} />;
+  return (
+    <div className="bg-white p-6 shadow-md rounded-lg mb-6 w-full sm:w-[48%] lg:w-[48%] h-[400px] flex flex-col items-center">
+      {/* Center the heading */}
+      <h2 className="text-2xl font-semibold text-gray-700 mb-4 text-center">
+        Category Distribution Pie Chart
+      </h2>
+      {/* Center the chart */}
+      <div className="w-full h-[300px]">
+        <Pie
+          data={chartData}
+          options={{
+            responsive: true,
+            maintainAspectRatio: false,
+          }}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default PieChart;
